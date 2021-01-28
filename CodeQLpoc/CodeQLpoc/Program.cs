@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace CodeQLpoc
 {
-    //To differentiate between Sync and Async
     class Program
     {
         static void Main(string[] args)
         {
-            Task delay = asyncTask();
-            syncCode();
-            delay.Wait();
+            //To display file content
+            string value = File.ReadAllText(args[0]); // BAD: This could read any file on the file system
+            Console.WriteLine(value);
+
+            //To differentiate between Sync and Async
+            //Task delay = asyncTask();
+            //syncCode();
+            //delay.Wait();
             Console.ReadLine();
         }
 
