@@ -22,7 +22,8 @@ namespace CodeQLpoc
         static void ReadFile(string path)
         {
             //To display file content
-            string value = File.ReadAllText(path); // BAD: This could read any file on the file system
+            StreamReader reader = new StreamReader(path);
+            string value = reader.ReadToEnd(); // BAD: This could read any file on the file system
             Console.WriteLine(value);
         }
 
