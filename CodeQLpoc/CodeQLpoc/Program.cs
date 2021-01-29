@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CodeQLpoc
 {
@@ -10,7 +11,14 @@ namespace CodeQLpoc
     {
         static void Main(string[] args)
         {
-            ReadFile(args[0]);
+            //ReadFile(args[0]);
+
+            // DTD expansion is enabled by default
+            XmlReaderSettings settings = new XmlReaderSettings();
+            XmlReader reader = XmlReader.Create(args[0], settings);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(args[1]);
+            Console.WriteLine(xmlDoc.InnerText);
 
             //To differentiate between Sync and Async
             //Task delay = asyncTask();
