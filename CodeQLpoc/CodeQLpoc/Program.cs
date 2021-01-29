@@ -10,15 +10,21 @@ namespace CodeQLpoc
     {
         static void Main(string[] args)
         {
-            //To display file content
-            string value = File.ReadAllText(args[0]); // BAD: This could read any file on the file system
-            Console.WriteLine(value);
+            ReadFile(args[0]);
 
             //To differentiate between Sync and Async
             //Task delay = asyncTask();
             //syncCode();
             //delay.Wait();
             Console.ReadLine();
+        }
+
+        static void ReadFile(string path)
+        {
+            //To display file content
+            StreamReader reader = new StreamReader(path);
+            string value = reader.ReadToEnd(); // BAD: This could read any file on the file system
+            Console.WriteLine(value);
         }
 
         static async Task asyncTask()
